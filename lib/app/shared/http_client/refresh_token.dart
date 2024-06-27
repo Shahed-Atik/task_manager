@@ -1,9 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:dio_refresh_bot/dio_refresh_bot.dart';
-import 'package:flutter/material.dart';
 import 'package:task_manager/app/shared/models/user.dart';
 import 'package:task_manager/app/shared/repos/auth_repo.dart';
 import 'package:task_manager/app/shared/services/local_storage_service.dart';

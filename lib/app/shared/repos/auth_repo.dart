@@ -3,14 +3,11 @@ import 'package:task_manager/app/shared/exceptions/app_exception_handler.dart';
 import 'package:task_manager/app/shared/http_client/refresh_token.dart';
 import 'package:task_manager/app/shared/models/profile.dart';
 import 'package:task_manager/app/shared/models/user.dart';
-import 'package:task_manager/app/shared/models/user_token.dart';
-import 'package:task_manager/app/shared/services/local_storage_service.dart';
 
 class AuthRepo {
   final Dio _dio;
-  final LocalStorageService _localStorageService;
 
-  AuthRepo(this._dio, this._localStorageService);
+  AuthRepo(this._dio);
 
   Future<User> login(
       {String username = 'emilys', String password = "emilyspass"}) async {
@@ -29,7 +26,6 @@ class AuthRepo {
 
   Future<Profile> getCurrentUser() async {
     try {
-      // _dio.options.headers.addAll({"Authorization": "Bearer dsssssssssss"});
       Response response = await _dio.get("/auth/me");
       return Profile.fromMap(response.data);
     } catch (e) {

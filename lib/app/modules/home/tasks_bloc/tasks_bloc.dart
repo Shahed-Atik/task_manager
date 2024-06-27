@@ -5,7 +5,6 @@ import 'package:task_manager/app/shared/models/get_all_tasks_response.dart';
 import 'package:task_manager/app/shared/models/task.dart';
 import 'package:task_manager/app/shared/repos/task_repo.dart';
 import 'package:task_manager/app/shared/utils/extensions.dart';
-import 'package:collection/collection.dart';
 import 'tasks_event.dart';
 import 'tasks_state.dart';
 

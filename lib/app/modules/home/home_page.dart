@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:task_manager/app/modules/home/profile_bloc/profile_event.dart';
-import 'package:task_manager/app/modules/home/tasks_bloc/tasks_event.dart';
 import 'package:task_manager/app/modules/home/widget/profile_dialog.dart';
 import 'package:task_manager/app/shared/models/task.dart';
 import 'package:task_manager/main.dart';

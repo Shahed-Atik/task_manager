@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/shared/exceptions/app_exception.dart';
 import 'package:task_manager/app/shared/models/profile.dart';
-import 'package:task_manager/app/shared/models/user.dart';
 import 'package:task_manager/app/shared/repos/auth_repo.dart';
 
 import 'profile_event.dart';

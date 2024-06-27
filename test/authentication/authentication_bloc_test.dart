@@ -1,5 +1,4 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:task_manager/app/modules/app_bloc/app_bloc.dart';
