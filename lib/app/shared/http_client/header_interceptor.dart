@@ -10,7 +10,7 @@ class HeaderInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     User? user = _localStorageService.getUser();
     if (user != null) {
-      options.headers.addAll({"Authorization": "Bearer ${user.token}"});
+      options.headers.addAll({"Authorization": "Bearer ${user.accessToken}"});
     }
 
     handler.next(options);

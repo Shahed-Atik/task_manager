@@ -4,6 +4,7 @@ import 'package:task_manager/app/shared/models/user.dart';
 enum AppStatus {
   authenticated,
   unauthenticated,
+  initial,
 }
 
 final class AppState extends Equatable {
@@ -16,6 +17,8 @@ final class AppState extends Equatable {
       : this._(status: AppStatus.authenticated, user: user);
 
   const AppState.unauthenticated() : this._(status: AppStatus.unauthenticated);
+
+  const AppState.init() : this._(status: AppStatus.initial);
 
   final AppStatus status;
   final User? user;

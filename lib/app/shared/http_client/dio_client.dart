@@ -5,6 +5,8 @@ import 'package:dio_refresh_bot/dio_refresh_bot.dart';
 import 'package:flutter/foundation.dart';
 import 'package:task_manager/app/shared/http_client/refresh_token.dart';
 
+import '../models/user.dart';
+
 class DioClient {
   static Dio create(
       {required String baseUrl,
@@ -14,7 +16,7 @@ class DioClient {
 
     final dio = Dio(baseOptions);
 
-    final refreshTokenInter = RefreshTokenInterceptor<AppAuthToken>(
+    final refreshTokenInter = RefreshTokenInterceptor<User>(
         tokenDio: createRefreshToken(baseUrl: baseUrl),
         tokenProtocol: tokenProtocol,
         tokenStorage: tokenStorageImpl,
@@ -24,8 +26,8 @@ class DioClient {
           log(error.toString());
           return null;
         },
-        refreshToken: (token, tokenDio) =>
-            refreshTokenRequest(token, tokenDio));
+        refreshToken: (user, tokenDio) =>
+            refreshTokenRequest(user, tokenDio));
 
     dio.interceptors.add(refreshTokenInter);
 

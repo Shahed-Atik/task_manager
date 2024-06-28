@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:task_manager/app/modules/app_bloc/app_bloc.dart';
-import 'package:task_manager/app/modules/app_bloc/app_event.dart';
 import 'package:task_manager/main.dart';
 import 'package:task_manager/app/shared/models/form_submission_status.dart';
 import 'package:task_manager/app/shared/repos/auth_repo.dart';
@@ -27,9 +25,6 @@ class LoginPage extends StatelessWidget {
 
             if (formStatus is SubmissionFailed) {
               _showSnackBar(context, formStatus.exception.toString());
-            }
-            if (formStatus is SubmissionSuccess) {
-              context.read<AppBloc>().add(AppLoginRequested(formStatus.user));
             }
           },
           child: Center(

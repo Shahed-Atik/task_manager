@@ -1,15 +1,15 @@
-import 'package:task_manager/app/shared/models/user.dart';
+import 'package:task_manager/app/modules/app_bloc/app_state.dart';
 
 sealed class AppEvent {
   const AppEvent();
 }
 
-final class AppLogoutRequested extends AppEvent {
-  const AppLogoutRequested();
+final class AppStatusChanged extends AppEvent {
+  const AppStatusChanged(this.status);
+
+  final AppStatus status;
 }
 
-final class AppLoginRequested extends AppEvent {
-  const AppLoginRequested(this.user);
-
-  final User user;
+final class AppLogoutRequested extends AppEvent {
+  const AppLogoutRequested();
 }

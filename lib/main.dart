@@ -12,6 +12,7 @@ import 'package:task_manager/app/shared/http_client/refresh_token.dart';
 import 'package:task_manager/app/shared/repos/auth_repo.dart';
 import 'app/modules/login/login_page.dart';
 import '/app/shared/services/local_storage_service.dart';
+import 'app/modules/splash/splash_page.dart';
 import 'app/shared/repos/task_repo.dart';
 
 GetIt getIt = GetIt.instance;
@@ -45,10 +46,16 @@ Future preInitializations() async {
     ),
   );
 
-  getIt.registerLazySingleton<AuthRepo>(() => AuthRepo(getIt<Dio>()));
+  getIt.registerLazySingleton<AuthRepo>(() => AuthRepo(
+        getIt<Dio>(),
+        getIt<TokenStorageImpl>(),
+        getIt<LocalStorageService>(),
+      ));
 
-  getIt.registerLazySingleton<TaskRepo>(
-      () => TaskRepo(getIt<Dio>(), getIt<LocalStorageService>()));
+  getIt.registerLazySingleton<TaskRepo>(() => TaskRepo(
+        getIt<Dio>(),
+        getIt<LocalStorageService>(),
+      ));
 }
 
 class MyApp extends StatelessWidget {
@@ -57,10 +64,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AppBloc(
-        localStorageService: getIt.get(),
-        tokenStorage: getIt.get(),
-      ),
+      create: (_) => AppBloc(authRepo: getIt.get()),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -85,6 +89,8 @@ class MyApp extends StatelessWidget {
                   return const HomePage();
                 case AppStatus.unauthenticated:
                   return const LoginPage();
+                case AppStatus.initial:
+                  return const SplashPage();
               }
             }),
       ),
